@@ -83,7 +83,7 @@ app.directive('googleMap', ['$rootScope', 'loadGoogleMapAPI',
                         $scope.location = new google.maps.LatLng($scope.lat, $scope.long);
 
                         $scope.mapOptions = {
-                            zoom: 12,
+                            zoom: 17,
                             center: $scope.location
                         };
 
