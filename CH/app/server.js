@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const index = require('./routes/index');
+const problemRoute = require('./routes/problem');
 // const users = require('./routes/users');
 
 const port = 5000;
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'components')));
 
 app.use('/', index);
+app.use('/problem', problemRoute);
 // app.use('/notificationHandler', notifications);
 // app.use('/templates', require('./routes/emailTemplates'));
 
