@@ -7,37 +7,29 @@
         <div id="map" class="google-map" lat="50.9357134" long="-1.3964415"></div>
     </div>
 
-    <div class="SB-col">
+    <div class="SB-col" ng-controller='View2Ctrl'>
         <div id="sidebar">
             <div id="sidebar-header">
                 <h4>Priority</h4>
-                <div class="priority-row">
-                    <div id="high" class="priority-select">
-                        <button ng-click="priority = 0">High</button>
+                <div layout="row">
+                    <div flex>
+                        <button ng-click="urgency(0)">High</button>
                     </div>
-                    <div id="med" class="priority-select">
-                        <button ng-click="priority = 1">Medium</button>
+                    <div flex>
+                        <button ng-click="urgency(1)">Medium</button>
                     </div>
-                    <div id="low" class="priority-select">
-                        <button ng-click="priority = 2">Low</button>
+                    <div flex>
+                        <button ng-click="urgency(2)">Low</button>
                     </div>
                 </div>
             </div>
             <div id="sidebar-content">
-                <div class="sb-content-elem">
+                <div class="sb-content-elem" ng-repeat="rep in response track by $">
                     <div class="issue-title">
-                        <p>Title</p>
+                        <p>{{rep.title}}</p>
                     </div>
                     <div class="see-more">
-                        <p>See More</p>
-                    </div>
-                </div>
-                <div class="sb-content-elem">
-                    <div class="issue-title">
-                        <p>Title</p>
-                    </div>
-                    <div class="see-more">
-                        <p>See More</p>
+                        <p>{{rep.}}</p>
                     </div>
                 </div>
             </div>
