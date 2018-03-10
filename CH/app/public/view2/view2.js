@@ -14,7 +14,7 @@ angular.module('myApp.view2', ['ngRoute'])
     $scope.problems = [];
 
     $scope.urgency = function(urgency) {
-        console.log("yes I am working thank you very much")
+        console.log("yes I am working thank you very much");
         RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency, type: 'urgency'}, function(response){
             if(response.error){
                 console.log("ERROR");

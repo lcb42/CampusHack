@@ -37,12 +37,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'components')));
-
 app.use('/', index);
 app.use('/problem', problemRoute);
 // app.use('/notificationHandler', notifications);
 // app.use('/templates', require('./routes/emailTemplates'));
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     let err = new Error('Not Found');
