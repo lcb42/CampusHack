@@ -19,6 +19,24 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
 }]);
 
+
+app.service('RequestFactory', ['$http', function ($http) {
+    this.makeRequest = function (url, body, cb) {
+        $http({
+            method: 'POST',
+            url: url,
+            data: body
+        }).then(function successCallback(response) {
+            console.log("Got response");
+            console.log(response.data);
+            cb(response.data);
+        }, function errorCallback(response) {
+            console.log("Error making request to server")
+        });
+    }
+}]);
+
+
 // Lazy loading of Google Map API
 app.service('loadGoogleMapAPI', ['$window', '$q',
     function ( $window, $q ) {
