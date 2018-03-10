@@ -12,13 +12,12 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
+  <link rel=“stylesheet” href=“https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css“>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -26,6 +25,11 @@
 
   <div ng-view></div>
 
+
+  <ul class="menu">
+    <li><a href="#!/view1">view1</a></li>
+    <li><a href="#!/view2">view2</a></li>
+  </ul>
   <div>Angular seed app: v<span app-version></span></div>
 
   <!-- In production use:
@@ -39,5 +43,22 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuG9ronXAG3Rt3WpbcO1nBRHAMPidadjI&callback=initMap">
+  </script>
+  <script>
+      function initMap() {
+          var UoS = {lat: 50.9357134, lng: -1.3964415};
+          var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 17,
+              center: UoS
+          });
+          var marker = new google.maps.Marker({
+              position: UoS,
+              map: map
+          });
+      }
+  </script>
 </body>
 </html>
