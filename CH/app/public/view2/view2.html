@@ -1,1 +1,48 @@
 <h1>Dashboard</h1>
+
+<div class="row">
+
+    <div class="map-col" id="map-container">
+        <!--<div id="map"></div>-->
+        <div id="map" class="google-map" lat="50.9357134" long="-1.3964415"></div>
+    </div>
+
+    <div class="SB-col">
+        <div id="sidebar">
+            <div id="sidebar-header">
+                <h4>Priority</h4>
+                <div class="priority-row">
+                    <div id="high" class="priority-select">
+                        <button ng-click="priority = 0">High</button>
+                    </div>
+                    <div id="med" class="priority-select">
+                        <button ng-click="priority = 1">Medium</button>
+                    </div>
+                    <div id="low" class="priority-select">
+                        <button ng-click="priority = 2">Low</button>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar-content">
+                <div class="sb-content-elem">
+                    <div class="issue-title">
+                        <p>Title</p>
+                    </div>
+                    <div class="see-more">
+                        <p>See More</p>
+                    </div>
+                </div>
+                <div class="sb-content-elem">
+                    <div class="issue-title">
+                        <p>Title</p>
+                    </div>
+                    <div class="see-more">
+                        <p>See More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
