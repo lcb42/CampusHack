@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +16,23 @@
     <link rel="stylesheet" href="html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
     <!--<script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
 </head>
 <body ng-app="myApp">
-<ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-</ul>
+
 
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div ng-view></div>
 
+<ul class="menu">
+    <li><a href="#!/view1">view1</a></li>
+    <li><a href="#!/view2">view2</a></li>
+</ul>
 <div>Angular seed app: v<span app-version></span></div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -38,6 +45,29 @@
 <script src="version/interpolate-filter.js"></script>
 <script src="view1/view1.js"></script>
 <script src="view2/view2.js"></script>
+<!--<script async defer-->
+        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuG9ronXAG3Rt3WpbcO1nBRHAMPidadjI&callback=initMap">-->
+<!--</script>-->
+<!--<script>-->
+    <!--window.addEventListener('DOMContentLoaded', initMap, false);-->
+    <!--function initMap() {-->
+        <!--var UoS = {lat: 50.9357134, lng: -1.3964415};-->
+        <!--var map = new google.maps.Map(document.getElementById('map'), {-->
+            <!--zoom: 4,-->
+            <!--center: UoS-->
+        <!--});-->
+        <!--var marker = new google.maps.Marker({-->
+            <!--position: UoS,-->
+            <!--map: map-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
+
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/node_modules/angular-aria/angular-aria.js"></script>
+<script src="/node_modules/angular-animate/angular-animate.js"></script>
+<script src="/node_modules/angular-messages/angular-messages.js"></script>
+<script src="/node_modules/angular-material/angular-material.js"></script>
 
 </body>
 </html>
