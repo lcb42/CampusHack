@@ -9,8 +9,21 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
+    $scope.problems = [];
+
+    $scope.urgency = function(urgency) {
+        console.log("yes I am working thank you very much")
+        RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency, type: 'urgency'}, function(response){
+            if(response.error){
+                console.log("ERROR");
+            }else{
+                $scope.problems = response.response;
+                $scope.apply();
+            }
+        });
+    }
 }]);
 
 angular
