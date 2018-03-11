@@ -1,6 +1,17 @@
 // 'use strict';
 
 // Declare app level module which depends on views, and components
+const config = {
+    apiKey: "AIzaSyAbCQvs-zNMzaSVdptdxF7S_yYLT5-sXyI",
+    authDomain: "storyofbones.firebaseapp.com",
+    databaseURL: "https://storyofbones.firebaseio.com",
+    projectId: "storyofbones",
+    storageBucket: "storyofbones.appspot.com",
+    messagingSenderId: "768080163378"
+};
+
+firebase.initializeApp(config);
+
 const app = angular.module('myApp', [
   'ngRoute', 'myApp.view1', 'myApp.view2','myApp.version'
 ]);

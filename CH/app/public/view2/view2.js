@@ -25,7 +25,7 @@ angular.module('myApp.view2', ['ngRoute'])
                 $scope.apply();
             }
         });
-    }
+    };
 
     function addMarkerMethod(){
 

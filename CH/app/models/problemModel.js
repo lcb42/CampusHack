@@ -9,7 +9,7 @@ const problemSchema = new Schema({
     title: {type: String},
     description: {type: String},
     urgency: {type: Number},
-    image: {type: String},
+    imageBlob: {type: String},
     category: {type: Number},
     completed: {type: Boolean, default: false},
     building: {type: Number}

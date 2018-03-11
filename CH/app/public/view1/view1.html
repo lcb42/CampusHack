@@ -16,22 +16,24 @@
             <input ng-model="description" class="form-control form-control-sm" type="text" id="inputSmall2">
         </div>
         <div class="input-field">
-            <select>
+            <select id="building">
                 <option value="" disabled selected>Which building are you in?</option>
-                <option ng-model="building" value="0">Building 32</option>
-                <option ng-model="building" value="1">Building 25</option>
-                <option ng-model="building" value="2">Building 5</option>
+                <option ng-model="building" name="1" value="0">Building 32</option>
+                <option ng-model="building" name="1" value="1">Building 25</option>
+                <option ng-model="building" name="1" value="2">Building 5</option>
+                <option ng-model="building" name="1" value="3">Library</option>
+                <option ng-model="building" name="1" value="4">Outside</option>
             </select>
             <label>Location of problem</label>
         </div>
         <div class="input-field" style="padding-bottom: 10px">
-            <select>
+            <select id="category">
                 <option value="" disabled selected>Category of problem</option>
-                <option ng-model="category" value="0">Electrical</option>
-                <option ng-model="category" value="1">Plumbing</option>
-                <option ng-model="category" value="2">Lighting</option>
-                <option ng-model="category" value="3">Property damage</option>
-                <option ng-model="category" value="4">Other</option>
+                <option ng-model="category" name="2" value="0">Electrical</option>
+                <option ng-model="category" name="2" value="1">Plumbing</option>
+                <option ng-model="category" name="2" value="2">Lighting</option>
+                <option ng-model="category" name="2" value="3">Property damage</option>
+                <option ng-model="category" name="2" value="4">Other</option>
             </select>
             <label>Location of problem</label>
         </div>
