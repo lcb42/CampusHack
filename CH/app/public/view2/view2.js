@@ -25,9 +25,8 @@ angular.module('myApp.view2', ['ngRoute'])
         });
     }
 
-    $scope.seemore = function(seemore){
+    $scope.seemore = function (seemore) {
         console.log("blobworkingblob");
-        $dialog.dialog({}).open('modalContent.html');
     }
 }]);
 
