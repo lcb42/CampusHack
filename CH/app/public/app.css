@@ -62,7 +62,11 @@ body {
     background-color: greenyellow;
     margin: auto;
     text-align: right;
+}
 
+#header-placeholder {
+    height: 50px;
+    width: 100%;
 }
 
 #sidebar-content {
