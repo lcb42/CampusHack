@@ -13,7 +13,7 @@ const config = {
 firebase.initializeApp(config);
 
 const app = angular.module('myApp', [
-  'ngRoute', 'myApp.view1', 'myApp.view2','myApp.version'
+  'ngRoute', 'myApp.view1', 'myApp.view2','myApp.version', 'chart.js'
 ]);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -23,7 +23,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $routeProvider.otherwise({redirectTo: '/view2'});
 
 }]);
-
 
 app.service('RequestFactory', ['$http', function ($http) {
     this.makeRequest = function (url, body, cb) {

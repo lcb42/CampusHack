@@ -3,11 +3,20 @@
     <div class="map-col" id="map-container">
         <!--<div id="map"></div>-->
         <div id="map" class="google-map" lat="50.9357134" long="-1.3964415"></div>
+
+    <!--<md-card>-->
+        <!--</md-card>-->
     </div>
 
     <div class="SB-col" ng-controller='View2Ctrl'>
         <div id="sidebar">
-            <div style="padding: 20px 20px 20px 20px">
+            <div style="z-index: 2;position: absolute"id="chart-maker">
+                <canvas id="line" class="chart chart-line" chart-data="data"
+                        chart-labels="labels" chart-series="series" chart-options="options"
+                        chart-dataset-override="datasetOverride" chart-click="onClick">
+                </canvas>
+            </div>
+            <div style="z-index: 1; position: absolute;padding: 20px 20px 20px 20px">
                 <form style="padding-bottom: 30px">
                     <p class="range-field">
                         <input type="range" id="limit" min="0" max="10" />

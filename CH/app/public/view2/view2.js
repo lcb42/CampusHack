@@ -11,6 +11,20 @@ angular.module('myApp.view2', ['ngRoute'])
 
 .controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    $scope.data = [0,1,2,3,4,5];
+    $scope.options = {
+        scales: {
+            yAxes: [
+                {
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    display: true,
+                    position: 'left'
+                }
+            ]
+        }
+    };
     $scope.problems = [];
     let urgen = 0;
 
@@ -88,7 +102,6 @@ angular.module('myApp.view2', ['ngRoute'])
             }
         });
     }
-
 }]);
 
 angular
