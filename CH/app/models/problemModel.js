@@ -10,8 +10,9 @@ const problemSchema = new Schema({
     description: {type: String},
     urgency: {type: Number},
     image: {type: String},
-    category: {type: String},
-    completed: {type: Boolean, default: false}
+    category: {type: Number},
+    completed: {type: Boolean, default: false},
+    building: {type: Number}
 },{
     timestamps: true
 });
