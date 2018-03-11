@@ -14,7 +14,7 @@ router.post('/uploadProblem', function(req, res){
         },
         title: body.title,
         description: body.description,
-        urgency: body.urgency,
+        urgency: body.priority,
         category: body.category,
         imageBlob: body.imageBlob,
         building: body.building
@@ -29,26 +29,33 @@ router.post('/uploadProblem', function(req, res){
 
 
 router.post('/fetchProblems', function(req, res){
+    console.log("made it to api");
     let filter = req.body.filter;
-    let type = req.body.type;
-    let completed = {};
-    switch(type){
-        case 'urgency':
-            completed = {};
-            break;
-        case 'Completed':
-            completed = {completed: true};
-            break;
-    }
+    // let type = req.body.type;
+    // let completed = {};
+    // switch(type){
+    //     case 'urgency':
+    //         completed = {};
+    //         break;
+    //     case 'Completed':
+    //         completed = {completed: true};
+    //         break;
+    // }
     // fetch for problems based of urgency there can be a filter and use aggregation to solve it
-    problemModel.aggregate([
-        {$match: {urgency: filter}, completed},
-    ]).sort({createdAt: -1}).
-        exec(function(err, problems){
-            if(err) res.json({response: err, error: true});
-            else{
-                res.json({response: problems, error: false});
-            }
+    // problemModel.aggregate([
+    //     {$match: {urgency: filter}, completed},
+    // ]).sort({createdAt: -1}).
+    //     exec(function(err, problems){
+    //         if(err) res.json({response: err, error: true});
+    //         else{
+    //             res.json({response: problems, error: false});
+    //         }
+    // });
+    problemModel.find({urgency: filter}, function(err, problems) {
+        if(err) res.json({response: err});
+        else{
+            res.json({response: problems});
+        }
     })
 });
 

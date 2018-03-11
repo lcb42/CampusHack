@@ -61,7 +61,7 @@ angular.module('myApp.view1', ['ngRoute'])
                     building: k.value,
                     category: e.value,
                     imageBlob: imageUrl,
-                    priority: $scope.priority
+                    priority: $scope.priority,
                 };
 
                 RequestFactory.makeRequest('/problem/uploadProblem', body, (response) => {

@@ -70,14 +70,14 @@ body {
 
 #sidebar-content {
     width: 98%;
-    height: 85%;
+    height:auto;
     margin: auto;
     overflow: auto;
 }
 
 .sb-content-elem {
     width: 95%;
-    height: 50px;
+    height:auto;
     background-color: yellowgreen;
     margin: 10px;
 }

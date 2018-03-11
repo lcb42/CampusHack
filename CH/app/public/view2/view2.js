@@ -11,36 +11,31 @@ angular.module('myApp.view2', ['ngRoute'])
 
 .controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
-    $scope.problems = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+    $scope.problems = [];
 
     $scope.urgency = function(urgency) {
-        MapProblems();
         console.log("yes I am working thank you very much");
-        RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency, type: 'urgency'}, function (response) {
+        RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency}, (response) => {
             if (response.error) {
                 console.log("ERROR");
             } else {
                 $scope.problems = response.response;
-
-                $scope.apply();
+                MapProblems();
+                // $scope.$apply();
             }
         });
     };
 
-    function addMarkerMethod(){
-
-    }
-
     function MapProblems() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        let map = new google.maps.Map(document.getElementById('map'), {
             zoom: 17,
             center: {lat: 50.9357155, lng: -1.3964423}
         });
-        for(var i = 0; i < Problems.length; i++ ) {
-            var position = new google.maps.LatLng(Problems[i][1].lat, Problems[i][1].lng);
-            var marker = new google.maps.Marker({
+        for(let i = 0; i < $scope.problems.length; i++ ) {
+            let position = new google.maps.LatLng({lat: $scope.problems[i].location.lat, lng: $scope.problems[i].location.long});
+            let marker = new google.maps.Marker({
                 position: position,
-                title: Problems[i][2],
+                title: $scope.problems[i].title,
                 map: map,
                 animation: google.maps.Animation.DROP
             });
