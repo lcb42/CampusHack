@@ -25,29 +25,8 @@ angular.module('myApp.view2', ['ngRoute'])
         });
     }
 
-    $scope.seemore = function(seemore){
+    $scope.seemore = function (seemore) {
         console.log("blobworkingblob");
-        $scope.collapsibleElements = [{
-            icon: 'mdi-image-filter-drama',
-            title: 'First',
-            content: 'Lorem ipsum dolor sit amet.'
-        },{
-            icon: 'mdi-maps-place',
-            title: 'Second',
-            content: 'Lorem ipsum dolor sit amet.'
-        },{
-            icon: 'mdi-social-whatshot',
-            title: 'Third',
-            content: 'Lorem ipsum dolor sit amet.'
-        }
-        ];
-    }
-}]);
-
-app.controller('SampleController', ["$scope", "ModalService", function($scope, ModalService) {
-
-    $scope.showAModal = function(seemore) {
-
         // Just provide a template url, a controller and call 'showModal'.
         ModalService.showModal({
             templateUrl: "yesno/yesno.html",
@@ -61,6 +40,15 @@ app.controller('SampleController', ["$scope", "ModalService", function($scope, M
                 $scope.message = result ? "You said Yes" : "You said No";
             });
         });
+
+    }
+}]);
+
+app.controller('SampleController', ["$scope", "ModalService", function($scope, ModalService) {
+
+    $scope.showAModal = function(seemore) {
+
+
 
     };
 
