@@ -21,6 +21,7 @@ angular.module('myApp.view1', ['ngRoute'])
     $scope.building = 0;
     $scope.category = 0;
 
+    getLocation();
 
     $scope.chosenImage = "";
     $scope.uploadFile = function() {
@@ -33,44 +34,62 @@ angular.module('myApp.view1', ['ngRoute'])
         }
     };
 
+    $scope.changeValue = function(value) {
+        $scope.building = value;
+        console.log("change building")
+    };
+
+    $scope.categoryValue = function(value) {
+        $scope.category = value;
+        console.log("change category")
+
+    };
+
     $scope.submitProblem = function() {
-        getLocation().then(() => {
-            let body = {
-                title: $scope.title,
-                description: $scope.description,
-                location: {
-                    lat: lat,
-                    long: long
-                },
-                building: $scope.building,
-                category: $scope.category,
-                imageBlob: url
-            };
-            RequestFactory.makeRequest('/problem/uploadproblem', body, (response) => {
-                if(response.res){
-                    // finished upload show something.
-                    window.Alert('true');
-                }else{
-                    window.Alert(response.error)
-                }
-            })
-        });
+        let body = {
+            title: $scope.title,
+            description: $scope.description,
+            location: {
+                lat: lat,
+                long: long
+            },
+            building: $scope.building,
+            category: $scope.category,
+            imageBlob: url,
+            priority: $scope.priority
+        };
+        console.log(body);
+        // RequestFactory.makeRequest('/problem/uploadproblem', body, (response) => {
+        //     if(response.res){
+        //         // finished upload show something.
+        //         window.Alert('true');
+        //     }else{
+        //         window.Alert(response.error)
+        //     }
+        // })
     };
 
     function getLocation() {
-        return new Promise((resolve) => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-                resolve()
-            } else {
-                window.alert("Geolocation is not supported by this browser");
-            }
-        });
+        if (navigator.geolocation) {
+            console.log("entered geolocation");
+            let options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+            navigator.geolocation.getCurrentPosition(function(position) {
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+                console.log(lat, long);
+            }, function(error) {
+                window.alert('failed')
+            }, options);
+        } else {
+            window.alert("Geolocation is not supported by this browser");
+        }
     }
 
     function showPosition(position) {
-        lat = position.coords.latitude;
-        long = position.coords.longitude;
     }
 
     function validFileType(file) {
