@@ -1,5 +1,3 @@
-<h1 xmlns:align="http://www.w3.org/1999/xhtml" xmlns:align="http://www.w3.org/1999/xhtml">Dashboard</h1>
-
 <div class="row">
 
     <div class="map-col" id="map-container">
@@ -41,7 +39,7 @@
                     </label>
                 </div>
                 <div>
-                    <a class="waves-effect waves-light btn" style="float: right" ng-click="applyFilter()">Apply</a>
+                    <a class="waves-effect waves-light btn" style="margin: auto" ng-click="applyFilter()">Apply</a>
                 </div>
             </div>
 
@@ -62,14 +60,8 @@
                                 <img ng-src={{x.imageBlob}}>
                             </div>
                             <div class="card-stacked">
-                                <div class="card-content" style="height:auto; padding:3px; right:3px">
-                                    <p>{{x.title}}</p>
-                                </div>
-                                <div class="card-content" style="right:3px; padding:3px">
-                                    <p>{{x.description}}</p>
-                                </div>
                                 <div class="row-card-action" style="padding:1px"">
-                                    <span class="badge" style="color:#FFFFFF; background-color:#FF1493; border-radius:3px">
+                                    <span class="badge " style="color:#FFFFFF; background-color:#FF1493; border-radius:3px">
                                         <img ng-if="x.category == 0" ng-src="../media/electricity.svg" style="height:20px; width:20px; padding:1px">
                                         <img ng-if="x.category == 1" ng-src="../media/water.svg" style="height:20px; width:20px; padding:1px">
                                         <img ng-if="x.category == 2" ng-src="../media/lighting.svg" style="height:20px; width:20px; padding:1px">
@@ -84,11 +76,20 @@
                                         <span ng-if="x.building == 4">Out</span>
                                     </span>
                                 </div>
-                                <div class="see-more">
-                                    <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
+                                <div class="card-content" style="height:auto; padding:3px; right:3px; font-weight: bold;">
+                                    <p>{{x.title}}</p>
                                 </div>
-                                <div>
+                                <div class="card-content" style="right:3px; padding:3px">
+                                    <p>{{x.description}}</p>
+                                </div>
+                                <div class="card-content" style="right:3px; padding:3px; color: lightgray">
                                     <span>{{x.createdAt | date : "fullDate"}}</span>
+                                </div>
+                                <div class="row-card-action" style="padding:1px"">
+                                    <div class="see-more" style="width: 50%; float:left; padding: 5px;">
+                                        <a class='btn waves-effect' ng-click="completed(x._id)" ng-if="x.completed == true" style="display: none">Complete</a>
+                                        <a class='btn waves-effect' ng-click="completed(x._id)" ng-if="x.completed == false">Complete</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
