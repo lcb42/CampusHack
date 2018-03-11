@@ -11,7 +11,7 @@ angular.module('myApp.view2', ['ngRoute'])
 
 .controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
-    $scope.problems = [];
+    $scope.problems = [0,1,2,3,4,5,6,7,8,9,10,11,12];
 
     $scope.urgency = function(urgency) {
         console.log("yes I am working thank you very much");
@@ -23,6 +23,11 @@ angular.module('myApp.view2', ['ngRoute'])
                 $scope.apply();
             }
         });
+    }
+
+    $scope.seemore = function(seemore){
+        console.log("blobworkingblob");
+        $dialog.dialog({}).open('modalContent.html');
     }
 }]);
 
