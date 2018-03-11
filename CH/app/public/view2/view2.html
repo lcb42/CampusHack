@@ -84,18 +84,14 @@
                                         <span ng-if="x.building == 4">Out</span>
                                     </span>
                                 </div>
+                                <div class="see-more">
+                                    <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
+                                </div>
+                                <div>
+                                    <span>{{x.createdAt | date : "fullDate"}}</span>
+                                </div>
                             </div>
                         </div>
-                    <span class="issue-title">
-                        {{x.title}} </br>
-                        {{x.description}}
-                    </span>
-                    <div class="see-more">
-                        <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
-                    </div>
-                    <div>
-                        <span>{{x.createdAt | date : "fullDate"}}</span>
-                    </div>
                 </div>
             </div>
         </div>
