@@ -31,32 +31,27 @@ router.post('/uploadProblem', function(req, res){
 router.post('/fetchProblems', function(req, res){
     console.log("made it to api");
     let filter = req.body.filter;
-    // let type = req.body.type;
-    // let completed = {};
-    // switch(type){
-    //     case 'urgency':
-    //         completed = {};
-    //         break;
-    //     case 'Completed':
-    //         completed = {completed: true};
-    //         break;
-    // }
-    // fetch for problems based of urgency there can be a filter and use aggregation to solve it
-    // problemModel.aggregate([
-    //     {$match: {urgency: filter}, completed},
-    // ]).sort({createdAt: -1}).
-    //     exec(function(err, problems){
-    //         if(err) res.json({response: err, error: true});
-    //         else{
-    //             res.json({response: problems, error: false});
-    //         }
-    // });
     problemModel.find({urgency: filter}, function(err, problems) {
         if(err) res.json({response: err});
         else{
             res.json({response: problems});
         }
     })
+});
+
+router.post('/epicFilter', function(req, res) {
+    let filter = req.body.filter;
+    console.log(filter.urgency, filter.completed, filter.order, filter.limit);
+    problemModel.find(
+        {urgency: filter.urgency, completed: filter.completed}).
+        limit(filter.limit).
+        sort({createdAt: filter.order}).
+        exec((err, problems) => {
+            if(err) console.log(err);
+            else{
+                res.json({response: problems})
+            }
+        })
 });
 
 router.post('/problemCompleted', function(req, res){

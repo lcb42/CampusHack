@@ -36,7 +36,7 @@ body {
 }
 
 .row {
-    height: 675px;
+    height: 750px;
 }
 .map-col {
     width: 75%;
@@ -70,7 +70,7 @@ body {
 
 #sidebar-content {
     width: 98%;
-    height:auto;
+    height:70%;
     margin: auto;
     overflow: auto;
 }

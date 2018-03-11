@@ -1,5 +1,3 @@
-<h1>Dashboard</h1>
-
 <div class="row">
 
     <div class="map-col" id="map-container">
@@ -9,6 +7,33 @@
 
     <div class="SB-col" ng-controller='View2Ctrl'>
         <div id="sidebar">
+            <div style="padding: 20px 20px 20px 20px">
+                <form style="padding-bottom: 30px">
+                    <p class="range-field">
+                        <input type="range" id="limit" min="0" max="10" />
+                    </p>
+                </form>
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Completed
+                        <input type="checkbox" id="completeornot">
+                        <span class="lever"></span>
+                        Incomplete
+                    </label>
+                </div>
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Descending
+                        <input type="checkbox" id="order">
+                        <span class="lever"></span>
+                        Ascending
+                    </label>
+                </div>
+                <div>
+                    <a class="waves-effect waves-light btn" style="float: right" ng-click="applyFilter()">Apply</a>
+                </div>
+            </div>
+
             <div id="header-placeholder">
                 <div class="card-tabs" style="height: 10px">
                     <ul class="tabs tabs-fixed-width">
@@ -25,12 +50,27 @@
                         {{x.description}}
                     </span>
                     <div class="see-more">
-                        <a class='btn waves-effect' data-target='demoModal' modal ng-click="seemore()">See More</a>
+                        <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
+                    </div>
+                    <div>
+                        <span>{{x.createdAt | date : "fullDate"}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
+<script>
+    $('.datepicker').pickadate({
+        placeholder: "Tasks ",
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: true // Close upon selecting a date,
+    });
+</script>
+
 

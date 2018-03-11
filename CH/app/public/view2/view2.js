@@ -12,9 +12,20 @@ angular.module('myApp.view2', ['ngRoute'])
 .controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
     $scope.problems = [];
+    let urgen = 0;
+
+    RequestFactory.makeRequest('/problem/fetchProblems', {filter: 0}, (response) => {
+        if (response.error) {
+            console.log("ERROR");
+        } else {
+            $scope.problems = response.response;
+            MapProblems();
+            // $scope.$apply();
+        }
+    });
 
     $scope.urgency = function(urgency) {
-        console.log("yes I am working thank you very much");
+        urgen = urgency;
         RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency}, (response) => {
             if (response.error) {
                 console.log("ERROR");
@@ -42,6 +53,42 @@ angular.module('myApp.view2', ['ngRoute'])
             console.log(marker);
         }
     }
+
+    $scope.completed = function(id){
+        console.log("completed task ID sent");
+        RequestFactory.makeRequest('/problem/problemCompleted',{id: id}, function (completed){
+            Materialize.toast('Task has been completed', 3000);
+            $scope.urgency(urgen);
+        })
+    };
+
+    $scope.applyFilter = function() {
+        let sort_number = 0;
+        let range_value = document.getElementById("limit").value;
+        let completeOrNot = document.getElementById('completeornot').checked;
+        if(document.getElementById('order').checked){
+            sort_number = 1;
+        }else{
+            sort_number = -1;
+        }
+        console.log(range_value, completeOrNot, sort_number);
+        RequestFactory.makeRequest('/problem/epicFilter', {filter: {
+                urgency: urgen,
+                order: sort_number,
+                completed: completeOrNot,
+                limit: Number(range_value)
+                }
+            }, (response) => {
+            if (response.error) {
+                console.log("ERROR");
+            } else {
+                $scope.problems = response.response;
+                MapProblems();
+                // $scope.$apply();
+            }
+        });
+    }
+
 }]);
 
 angular
@@ -49,6 +96,7 @@ angular
     .controller('AppCtrl', function ($scope, $timeout, $mdSidenav) {
         $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
+
 
         function buildToggler(componentId) {
             return function() {
