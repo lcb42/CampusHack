@@ -1,11 +1,10 @@
+<h1 xmlns:align="http://www.w3.org/1999/xhtml" xmlns:align="http://www.w3.org/1999/xhtml">Dashboard</h1>
+
 <div class="row">
 
     <div class="map-col" id="map-container">
         <!--<div id="map"></div>-->
         <div id="map" class="google-map" lat="50.9357134" long="-1.3964415"></div>
-
-    <!--<md-card>-->
-        <!--</md-card>-->
     </div>
 
     <div class="SB-col" ng-controller='View2Ctrl'>
@@ -57,16 +56,42 @@
             </div>
             <div id="sidebar-content">
                 <div class="collection-item sb-content-elem" ng-repeat="x in problems track by $index">
-                    <span class="issue-title">
-                        {{x.title}} </br>
-                        {{x.description}}
-                    </span>
-                    <div class="see-more">
-                        <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
-                    </div>
-                    <div>
-                        <span>{{x.createdAt | date : "fullDate"}}</span>
-                    </div>
+                    <div class="col s12 m7" style="width:auto">
+                        <div class="card horizontal">
+                            <div class="card-image" style="padding:3px;">
+                                <img ng-src={{x.imageBlob}}>
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="height:auto; padding:3px; right:3px">
+                                    <p>{{x.title}}</p>
+                                </div>
+                                <div class="card-content" style="right:3px; padding:3px">
+                                    <p>{{x.description}}</p>
+                                </div>
+                                <div class="row-card-action" style="padding:1px"">
+                                    <span class="badge" style="color:#FFFFFF; background-color:#FF1493; border-radius:3px">
+                                        <img ng-if="x.category == 0" ng-src="../media/electricity.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 1" ng-src="../media/water.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 2" ng-src="../media/lighting.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 3" ng-src="../media/damage.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 4" ng-src="../media/misc.svg" style="height:20px; width:20px; padding:1px">
+                                    </span>
+                                    <span class="badge" style="color:#FFFFFF; background-color:#008080; border-radius:3px">
+                                        <span ng-if="x.building == 0">B32</span>
+                                        <span ng-if="x.building == 1">B25</span>
+                                        <span ng-if="x.building == 2">B5</span>
+                                        <span ng-if="x.building == 3">Lib</span>
+                                        <span ng-if="x.building == 4">Out</span>
+                                    </span>
+                                </div>
+                                <div class="see-more">
+                                    <a class='btn waves-effect' ng-click="completed(x._id)">Complete</a>
+                                </div>
+                                <div>
+                                    <span>{{x.createdAt | date : "fullDate"}}</span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
