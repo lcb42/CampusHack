@@ -65,4 +65,23 @@ router.post('/problemCompleted', function(req, res){
     })
 });
 
+
+router.post('/categoryGraph',function(req, res){
+    let promise_arr = [];
+    for(let i = 0; i < 5; i++){
+        promise_arr.push(countCategoryRepeat(i))
+    }
+    Promise.all(promise_arr).then((result) => {
+        res.json({response: result})
+    })
+});
+
+function countCategoryRepeat(index) {
+    return new Promise((resolve) => {
+        problemModel.count({category: index}, function(err, count){
+            resolve(count)
+        })
+    })
+}
+
 module.exports = router;

@@ -9,41 +9,41 @@
     </div>
 
     <div class="SB-col" ng-controller='View2Ctrl'>
-        <div class="sample-show-hide" ng-show="expressions" style="padding: 20px 20px 20px 20px" id="chart-maker">
-            <canvas id="line" class="chart chart-line" chart-data="data"
-                    chart-labels="labels" chart-series="series" chart-options="options"
-                    chart-dataset-override="datasetOverride" chart-click="onClick">
-            </canvas>
-        </div>
         <div id="sidebar">
+            <div style="padding-top: 10px;padding-left: 10px;">
+                <a class="waves-effect waves-light btn" ng-click="showGraph()">View history</a>
+            </div>
+            <!--<div id="graph1" style="display: none; padding: 10px 10px 10px 10px; margin: auto; width: 560px">-->
+            <canvas id="graph1" style="display: none; padding: 10px 10px 10px 10px; margin: auto; width: 350px" class="chart chart-bar" chart-data="data"
+                chart-data="data" chart-labels="labels" chart-series="series"
+                chart-dataset-override="datasetOverride" chart-click="onClick">
+            </canvas>
+            <!--</div>-->
             <div style="padding: 20px 20px 20px 20px">
-                <div style="z-index: 2;position: relative">
-                    <form style="padding-bottom: 30px">
-                        <p class="range-field">
-                            <input type="range" id="limit" min="0" max="10" />
-                        </p>
-                    </form>
-                    <div style="text-align: center;height: 50px" class="switch">
-                        <label  style="display: inline-block;">
-                            Incomplete
-                            <input type="checkbox" id="completeornot">
-                            <span class="lever"></span>
-                            Complete
-                        </label>
-                    </div>
-                    <div style="text-align: center;height: 50px" class="switch">
-                        <label  style="display: inline-block;">
-                            Descending
-                            <input type="checkbox" id="order">
-                            <span class="lever"></span>
-                            Ascending
-                        </label>
-                    </div>
-                    <div>
-                        <a class="waves-effect waves-light btn" style="float: right" ng-click="applyFilter()">Apply</a>
-                    </div>
+                <form style="padding-bottom: 30px">
+                    <p class="range-field">
+                        <input type="range" id="limit" min="0" max="10" />
+                    </p>
+                </form>
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Incomplete
+                        <input type="checkbox" id="completeornot">
+                        <span class="lever"></span>
+                        Complete
+                    </label>
                 </div>
-
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Descending
+                        <input type="checkbox" id="order">
+                        <span class="lever"></span>
+                        Ascending
+                    </label>
+                </div>
+                <div>
+                    <a class="waves-effect waves-light btn" style="float: right" ng-click="applyFilter()">Apply</a>
+                </div>
             </div>
 
             <div id="header-placeholder">

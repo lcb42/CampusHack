@@ -12,7 +12,7 @@ angular.module('myApp.view2', ['ngRoute'])
 .controller('View2Ctrl', ['$scope','RequestFactory',function($scope, RequestFactory) {
 
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-    $scope.data = [0,1,2,3,4,5];
+    $scope.labels = ['Electric', 'Plumbing', 'Lighting', 'Property', 'other'];
     $scope.options = {
         scales: {
             yAxes: [
@@ -26,7 +26,7 @@ angular.module('myApp.view2', ['ngRoute'])
         }
     };
     $scope.expressions = false;
-    let tempbool = true;
+    let tempbool = false;
     $scope.problems = [];
     let urgen = 0;
 
@@ -78,7 +78,6 @@ angular.module('myApp.view2', ['ngRoute'])
     };
 
     $scope.applyFilter = function() {
-        // $scope.expressions = tempbool;
         let sort_number = 0;
         let range_value = document.getElementById("limit").value;
         let completeOrNot = document.getElementById('completeornot').checked;
@@ -103,6 +102,28 @@ angular.module('myApp.view2', ['ngRoute'])
                 // $scope.$apply();
             }
         });
+    };
+
+    function graphControl(id, show) {
+        if(show){
+            $(id).show({y: '-200'}, 1000);
+        }else {
+            $(id).hide({y: '0'}, 1000);
+        }
+    }
+
+    $scope.showGraph = function() {
+        if(tempbool === true){
+            graphControl('#graph1', false);
+            tempbool = false;
+        }else{
+            graphControl('#graph1', true);
+            tempbool = true;
+            RequestFactory.makeRequest('/problem/categoryGraph',{}, function (completed){
+                // Materialize.toast('Task has been completed', 3000);
+                $scope.data = completed.response;
+            });
+        }
     }
 }]);
 
