@@ -27,8 +27,43 @@ angular.module('myApp.view2', ['ngRoute'])
 
     $scope.seemore = function(seemore){
         console.log("blobworkingblob");
-        $dialog.dialog({}).open('modalContent.html');
+        $scope.collapsibleElements = [{
+            icon: 'mdi-image-filter-drama',
+            title: 'First',
+            content: 'Lorem ipsum dolor sit amet.'
+        },{
+            icon: 'mdi-maps-place',
+            title: 'Second',
+            content: 'Lorem ipsum dolor sit amet.'
+        },{
+            icon: 'mdi-social-whatshot',
+            title: 'Third',
+            content: 'Lorem ipsum dolor sit amet.'
+        }
+        ];
     }
+}]);
+
+app.controller('SampleController', ["$scope", "ModalService", function($scope, ModalService) {
+
+    $scope.showAModal = function(seemore) {
+
+        // Just provide a template url, a controller and call 'showModal'.
+        ModalService.showModal({
+            templateUrl: "yesno/yesno.html",
+            controller: "YesNoController"
+        }).then(function(modal) {
+            // The modal object has the element built, if this is a bootstrap modal
+            // you can call 'modal' to show it, if it's a custom modal just show or hide
+            // it as you need to.
+            modal.element.modal();
+            modal.close.then(function(result) {
+                $scope.message = result ? "You said Yes" : "You said No";
+            });
+        });
+
+    };
+
 }]);
 
 angular
