@@ -48,7 +48,6 @@ body {
     width: 25%;
     height: 100%;
     float: right;
-    background-color: lightgray;
 }
 
 #sidebar {
@@ -62,14 +61,17 @@ body {
     background-color: greenyellow;
     margin: auto;
     text-align: right;
+}
 
+#header-placeholder {
+    height: 50px;
+    width: 100%;
 }
 
 #sidebar-content {
     width: 98%;
     height: 85%;
     margin: auto;
-    background-color: green;
     overflow: auto;
 }
 
