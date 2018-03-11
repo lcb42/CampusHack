@@ -26,11 +26,11 @@
             <div id="sidebar-content">
                 <div class="collection-item sb-content-elem" ng-repeat="x in problems">
                     <span class="issue-title">
-                        {{x.title}} </br>
+                        {{x}} </br>
                         {{x.description}}
                     </span>
                     <div class="see-more">
-                        <button ng-click="">See More</button>
+                        <a class='btn waves-effect' data-target='demoModal' modal ng-click="seemore()">See More</a>
                     </div>
                 </div>
             </div>
