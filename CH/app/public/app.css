@@ -48,7 +48,6 @@ body {
     width: 25%;
     height: 100%;
     float: right;
-    background-color: lightgray;
 }
 
 #sidebar {
@@ -73,7 +72,6 @@ body {
     width: 98%;
     height: 85%;
     margin: auto;
-    background-color: green;
     overflow: auto;
 }
 
