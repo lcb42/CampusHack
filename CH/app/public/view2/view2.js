@@ -25,6 +25,8 @@ angular.module('myApp.view2', ['ngRoute'])
             ]
         }
     };
+    $scope.expressions = false;
+    let tempbool = true;
     $scope.problems = [];
     let urgen = 0;
 
@@ -72,11 +74,11 @@ angular.module('myApp.view2', ['ngRoute'])
         console.log("completed task ID sent");
         RequestFactory.makeRequest('/problem/problemCompleted',{id: id}, function (completed){
             Materialize.toast('Task has been completed', 3000);
-            $scope.urgency(urgen);
         })
     };
 
     $scope.applyFilter = function() {
+        // $scope.expressions = tempbool;
         let sort_number = 0;
         let range_value = document.getElementById("limit").value;
         let completeOrNot = document.getElementById('completeornot').checked;

@@ -67,9 +67,9 @@ angular.module('myApp.view1', ['ngRoute'])
                 RequestFactory.makeRequest('/problem/uploadProblem', body, (response) => {
                     if(response.res){
                         // finished upload show something.
-                        window.Alert('true');
+                        window.alert('Successed to upload');
                     }else{
-                        window.Alert(response.error)
+                        window.alert(response.error)
                     }
                 })
             });

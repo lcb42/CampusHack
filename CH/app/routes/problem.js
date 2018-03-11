@@ -49,6 +49,7 @@ router.post('/epicFilter', function(req, res) {
         exec((err, problems) => {
             if(err) console.log(err);
             else{
+                console.log(problems);
                 res.json({response: problems})
             }
         })
