@@ -9,20 +9,13 @@
 
     <div class="SB-col" ng-controller='View2Ctrl'>
         <div id="sidebar">
-            <div id="sidebar-header">
-                <h4>Priority</h4>
-                <div layout="row">
-                    <div flex>
-                        <button ng-click="urgency(0)">High</button>
+                    <div class="card-tabs" style="height: 10px">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a ng-click="urgency(0)"><span class="red-text text-lighten-2">Urgent</span></a></li>
+                            <li class="tab"><a class="active" ng-click="urgency(1)"><span class="amber-text text-lighten-2">Medium</span></a></li>
+                            <li class="tab"><a ng-click="urgency(2)"><span class="green-text text-lighten-2">Low</span></a></li>
+                        </ul>
                     </div>
-                    <div flex>
-                        <button ng-click="urgency(1)">Medium</button>
-                    </div>
-                    <div flex>
-                        <button ng-click="urgency(2)">Low</button>
-                    </div>
-                </div>
-            </div>
             <div id="sidebar-content">
                 <div class="sb-content-elem" ng-repeat="rep in response track by $">
                     <div class="issue-title">

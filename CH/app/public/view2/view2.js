@@ -14,15 +14,38 @@ angular.module('myApp.view2', ['ngRoute'])
     $scope.problems = [];
 
     $scope.urgency = function(urgency) {
+        MapProblems();
         console.log("yes I am working thank you very much");
-        RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency, type: 'urgency'}, function(response){
-            if(response.error){
+        RequestFactory.makeRequest('/problem/fetchProblems', {filter: urgency, type: 'urgency'}, function (response) {
+            if (response.error) {
                 console.log("ERROR");
-            }else{
+            } else {
                 $scope.problems = response.response;
+
                 $scope.apply();
             }
         });
+    }
+
+    function addMarkerMethod(){
+
+    }
+
+    function MapProblems() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: {lat: 50.9357155, lng: -1.3964423}
+        });
+        for(var i = 0; i < Problems.length; i++ ) {
+            var position = new google.maps.LatLng(Problems[i][1].lat, Problems[i][1].lng);
+            var marker = new google.maps.Marker({
+                position: position,
+                title: Problems[i][2],
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+            console.log(marker);
+        }
     }
 }]);
 
