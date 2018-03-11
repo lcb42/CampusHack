@@ -10,10 +10,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   $routeProvider.otherwise({redirectTo: '/view1'});
   $routeProvider.otherwise({redirectTo: '/view2'});
-  $routeProvider.otherwise({redirectTo: '/view3'});
 
-  // $routeProvider
-  //     .when('/', homeConfig)
 }]);
 
 
@@ -52,7 +49,7 @@ app.service('loadGoogleMapAPI', ['$window', '$q',
         // Script loaded callback, send resolve
         $window.initMap = function () {
             deferred.resolve();
-        }
+        };
 
         loadScript();
 
@@ -90,7 +87,7 @@ app.directive('googleMap', ['$rootScope', 'loadGoogleMapAPI',
                             position: $scope.location,
                             map: $scope.map,
                         });
-                    }
+                    };
 
                     // Loads google map script
                     loadGoogleMapAPI.then(function () {

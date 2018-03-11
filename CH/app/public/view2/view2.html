@@ -17,12 +17,13 @@
                         </ul>
                     </div>
             <div id="sidebar-content">
-                <div class="sb-content-elem" ng-repeat="rep in response track by $">
-                    <div class="issue-title">
-                        <p>{{rep.title}}</p>
-                    </div>
+                <div class="collection-item sb-content-elem" ng-repeat="x in problems">
+                    <span class="issue-title">
+                        {{x}} </br>
+                        {{x.description}}
+                    </span>
                     <div class="see-more">
-                        <p>{{rep}}</p>
+                        <a class='btn waves-effect' data-target='demoModal' modal ng-click="seemore()">See More</a>
                     </div>
                 </div>
             </div>
