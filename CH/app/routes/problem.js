@@ -16,23 +16,24 @@ firebase.initializeApp(config);
 
 router.post('/uploadProblem', function(req, res){
     let body = req.body;
-
+    console.log('mad it to API upload problem');
     uploadToGcs(body.imageBlob).then((imageUrl) => {
         let problemSchema = new problemModel({
             location: {
-                lat: body.latitude,
-                long: body.longitude
+                lat: body.lat,
+                long: body.long
             },
             title: body.title,
             description: body.description,
             urgency: body.urgency,
             category: body.category,
-            image: imageUrl
+            image: imageUrl,
+            building: body.building
         });
         problemSchema.save(function(err, body){
-            if(err) res.json({"response": false});
+            if(err) res.json({res: false, error: err});
             else{
-                res.json({"response": true})
+                res.json({res: true})
             }
         })
     }).catch((error) => {
