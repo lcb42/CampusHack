@@ -1,0 +1,80 @@
+<div ng-controller='View1Ctrl'>
+    <!--<a style="width: 300px; height: 40px" ng-click="goToDialog()" class="waves-effect waves-light btn">Report problem</a>-->
+    <div style="margin:auto;
+     overflow:auto;
+     width:500px;
+      height:600px;
+       background-color: #e0e0e0;
+        margin-top: 100px; border-radius: 10px;
+        padding: 30px 30px 30px 30px">
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Title of issue</label>
+            <input ng-model="title" class="form-control form-control-sm" type="text" id="inputSmall">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Description</label>
+            <input ng-model="description" class="form-control form-control-sm" type="text" id="inputSmall2">
+        </div>
+        <div class="input-field">
+            <select id="building">
+                <option value="" disabled selected>Which building are you in?</option>
+                <option ng-model="building" name="1" value="0">Building 32</option>
+                <option ng-model="building" name="1" value="1">Building 25</option>
+                <option ng-model="building" name="1" value="2">Building 5</option>
+                <option ng-model="building" name="1" value="3">Library</option>
+                <option ng-model="building" name="1" value="4">Outside</option>
+            </select>
+            <label>Location of problem</label>
+        </div>
+        <div class="input-field" style="padding-bottom: 10px">
+            <select id="category">
+                <option value="" disabled selected>Category of problem</option>
+                <option ng-model="category" name="2" value="0">Electrical</option>
+                <option ng-model="category" name="2" value="1">Plumbing</option>
+                <option ng-model="category" name="2" value="2">Lighting</option>
+                <option ng-model="category" name="2" value="3">Property damage</option>
+                <option ng-model="category" name="2" value="4">Other</option>
+            </select>
+            <label>Location of problem</label>
+        </div>
+        <form class="col s12">
+            <div class="row" style="height: 80px">
+                <p class="col s4">
+                    <input ng-model="priority" name="group1" value="0" type="radio" id="test1" />
+                    <label for="test1">Low priority</label>
+                </p>
+                <p class="col s4">
+                    <input ng-model="priority" name="group1" value="1" type="radio" id="test2" />
+                    <label for="test2">Medium priority</label>
+                </p>
+                <p class="col s4">
+                    <input ng-model="priority" name="group1" value="2" type="radio" id="test3"  />
+                    <label for="test3">Urgent</label>
+                </p>
+            </div>
+        </form>
+        <form action="#">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" custom-on-change="uploadFile" id="exampleInputFile">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <div>
+                <img ng-src="{{chosenImage}}" alt="">
+            </div>
+        </form>
+        <div style="width: 150px; height:50px; margin: auto">
+            <a ng-click="submitProblem()" class="waves-effect waves-light btn"></i>Submit</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

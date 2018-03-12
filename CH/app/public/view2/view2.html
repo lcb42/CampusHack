@@ -1,0 +1,121 @@
+<div class="row">
+
+    <div class="map-col" id="map-container">
+        <!--<div id="map"></div>-->
+        <div id="map" class="google-map" lat="50.9357134" long="-1.3964415"></div>
+    </div>
+
+    <div class="SB-col" ng-controller='View2Ctrl'>
+        <div id="sidebar">
+            <div style="padding-top: 10px;padding-left: 10px;">
+                <a class="waves-effect waves-light btn" ng-click="showGraph()">View history</a>
+            </div>
+            <!--<div id="graph1" style="display: none; padding: 10px 10px 10px 10px; margin: auto; width: 560px">-->
+            <canvas id="graph1" style="display: none; padding: 10px 10px 10px 10px; margin: auto; width: 350px" class="chart chart-bar" chart-data="data"
+                chart-data="data" chart-labels="labels" chart-series="series"
+                chart-dataset-override="datasetOverride" chart-click="onClick">
+            </canvas>
+            <!--</div>-->
+            <div style="padding: 20px 20px 20px 20px">
+                <form style="padding-bottom: 30px">
+                    <p class="range-field">
+                        <input type="range" id="limit" min="0" max="10" />
+                    </p>
+                </form>
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Incomplete
+                        <input type="checkbox" id="completeornot">
+                        <span class="lever"></span>
+                        Complete
+                    </label>
+                </div>
+                <div style="text-align: center;height: 50px" class="switch">
+                    <label  style="display: inline-block;">
+                        Descending
+                        <input type="checkbox" id="order">
+                        <span class="lever"></span>
+                        Ascending
+                    </label>
+                </div>
+                <div>
+                    <a class="waves-effect waves-light btn" style="margin: auto" ng-click="applyFilter()">Apply</a>
+                </div>
+            </div>
+
+            <div id="header-placeholder">
+                <div class="card-tabs" style="height: 10px">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a ng-click="urgency(2)"><span class="red-text text-lighten-2">Urgent</span></a></li>
+                        <li class="tab"><a class="active" ng-click="urgency(1)"><span class="amber-text text-lighten-2">Medium</span></a></li>
+                        <li class="tab"><a ng-click="urgency(0)"><span class="green-text text-lighten-2">Low</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="sidebar-content">
+                <div class="collection-item sb-content-elem" ng-repeat="x in problems track by $index">
+                    <div class="col s12 m7" style="width:auto">
+                        <div class="card horizontal">
+                            <div class="card-image" style="padding:3px;">
+                                <img ng-src={{x.imageBlob}}>
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="height:auto; padding:3px; right:3px">
+                                    <p>{{x.title}}</p>
+                                </div>
+                                <div class="card-content" style="right:3px; padding:3px">
+                                    <p>{{x.description}}</p>
+                                </div>
+                                <div class="row-card-action" style="padding:1px">
+                                <div class="row-card-action" style="padding:1px"">
+                                    <span class="badge " style="color:#FFFFFF; background-color:#FF1493; border-radius:3px">
+                                        <img ng-if="x.category == 0" ng-src="../media/electricity.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 1" ng-src="../media/water.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 2" ng-src="../media/lighting.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 3" ng-src="../media/damage.svg" style="height:20px; width:20px; padding:1px">
+                                        <img ng-if="x.category == 4" ng-src="../media/misc.svg" style="height:20px; width:20px; padding:1px">
+                                    </span>
+                                    <span class="badge" style="color:#FFFFFF; background-color:#008080; border-radius:3px">
+                                        <span ng-if="x.building == 0">B32</span>
+                                        <span ng-if="x.building == 1">B25</span>
+                                        <span ng-if="x.building == 2">B5</span>
+                                        <span ng-if="x.building == 3">Lib</span>
+                                        <span ng-if="x.building == 4">Out</span>
+                                    </span>
+                                </div>
+                                <div class="card-content" style="height:auto; padding:3px; right:3px; font-weight: bold;">
+                                    <p>{{x.title}}</p>
+                                </div>
+                                <div class="card-content" style="right:3px; padding:3px">
+                                    <p>{{x.description}}</p>
+                                </div>
+                                <div class="card-content" style="right:3px; padding:3px; color: lightgray">
+                                    <span>{{x.createdAt | date : "fullDate"}}</span>
+                                </div>
+                                <div class="row-card-action" style="padding:1px"">
+                                    <div class="see-more" style="width: 50%; float:left; padding: 5px;">
+                                        <a class='btn waves-effect' ng-click="completed(x._id)" ng-if="x.completed == true" style="display: none">Complete</a>
+                                        <a class='btn waves-effect' ng-click="completed(x._id)" ng-if="x.completed == false">Complete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.datepicker').pickadate({
+        placeholder: "Tasks ",
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: true // Close upon selecting a date,
+    });
+</script>
+
+
